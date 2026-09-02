@@ -18,7 +18,7 @@ export default function RecordButton({
       onPress={onPress}
     >
       <Text style={styles.text}>
-        {isRecording ? 'Остановить запись' : 'Начать запись'}
+        {isRecording ? 'Зупинити запис' : 'Почати запис'}
       </Text>
     </Pressable>
   );
@@ -31,16 +31,22 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#208AEF',
+    backgroundColor: '#4CAF6A',
   },
 
   recordingButton: {
-    backgroundColor: '#D32F2F',
+    backgroundColor: '#202521',
+    borderWidth: 2,
+    borderColor: '#5CCF7A',
   },
 
   text: {
-    color: '#FFFFFF',
+    color: '#0F1110',
     fontSize: 18,
     fontWeight: '600',
+  },
+
+  recordingText: {
+    color: '#5CCF7A',
   },
 });

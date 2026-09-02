@@ -17,18 +17,21 @@ export default function SearchBar({
       value={value}
       onChangeText={onChangeText}
       placeholder={placeholder}
+      placeholderTextColor="#777F79"
     />
   );
 }
 
 const styles = StyleSheet.create({
   input: {
-    height: 45,
-    borderWidth: 1,
-    borderColor: '#cccccc',
-    borderRadius: 10,
-    paddingHorizontal: 12,
-    backgroundColor: '#ffffff',
+    height: 44,
+    paddingHorizontal: 14,
     marginBottom: 15,
+    borderRadius: 10,
+    backgroundColor: '#181C19',
+    borderWidth: 1,
+    borderColor: '#292E2A',
+    color: '#F1F3F1',
+    fontSize: 15,
   },
 });

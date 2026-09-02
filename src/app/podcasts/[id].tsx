@@ -39,17 +39,18 @@ function formatTime(seconds: number) {
 
 export default function PodcastDetailsScreen() {
   const {
-    name,
-    artist,
-    artworkUrl,
-    feedUrl,
+  id,
+  name,
+  artist,
+  artworkUrl,
+  feedUrl,
   } = useLocalSearchParams<{
     id: string;
     name: string;
     artist: string;
     artworkUrl: string;
     feedUrl: string;
-  }>();
+}>();
 
   const [episodes, setEpisodes] =
     useState<PodcastEpisode[]>([]);
@@ -86,7 +87,7 @@ export default function PodcastDetailsScreen() {
     router.push({
       pathname: '/player/[id]',
       params: {
-        id: Date.now().toString(),
+        id,
         name,
         artist,
         artworkUrl,
@@ -94,8 +95,7 @@ export default function PodcastDetailsScreen() {
 
         episodeTitle: episode.title,
         episodeAudioUrl: episode.audioUrl,
-        episodeDuration:
-          episode.duration.toString(),
+        episodeDuration: episode.duration.toString(),
         episodeDate: episode.date,
       },
     });
@@ -188,67 +188,82 @@ export default function PodcastDetailsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
+    padding: 20,
+    backgroundColor: '#0F1110',
   },
 
   podcastHeader: {
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 24,
   },
 
   artwork: {
-    width: 180,
-    height: 180,
-    borderRadius: 15,
-    marginBottom: 15,
+    width: 190,
+    height: 190,
+    borderRadius: 14,
+    marginBottom: 16,
   },
 
   name: {
     fontSize: 23,
     fontWeight: '600',
     textAlign: 'center',
-    marginBottom: 5,
+    marginBottom: 6,
+    color: '#F1F3F1',
   },
 
   artist: {
     fontSize: 15,
-    color: '#777777',
+    color: '#929992',
+    textAlign: 'center',
   },
 
   episodesTitle: {
-    fontSize: 21,
+    fontSize: 22,
     fontWeight: '600',
-    marginBottom: 10,
+    marginBottom: 14,
+    color: '#F1F3F1',
   },
 
   episode: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 14,
+    padding: 15,
     marginBottom: 10,
-    borderRadius: 10,
-    backgroundColor: '#eeeeee',
+    borderRadius: 12,
+    backgroundColor: '#181C19',
+    borderWidth: 1,
+    borderColor: '#292E2A',
   },
 
   episodeInfo: {
     flex: 1,
-    marginRight: 10,
+    marginRight: 12,
   },
 
   episodeTitle: {
     fontSize: 16,
     fontWeight: '500',
-    marginBottom: 6,
+    lineHeight: 21,
+    marginBottom: 7,
+    color: '#F1F3F1',
   },
 
   episodeDetails: {
     fontSize: 13,
-    color: '#777777',
+    color: '#929992',
   },
 
   playIcon: {
-    fontSize: 22,
-    color: '#208AEF',
+    width: 42,
+    height: 42,
+    borderRadius: 21,
+    backgroundColor: '#202521',
+    color: '#5CCF7A',
+    fontSize: 17,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    overflow: 'hidden',
   },
 
   list: {
@@ -263,12 +278,12 @@ const styles = StyleSheet.create({
 
   loadingText: {
     marginTop: 10,
-    color: '#666666',
+    color: '#929992',
   },
 
   empty: {
     textAlign: 'center',
     marginTop: 30,
-    color: '#777777',
+    color: '#777F79',
   },
 });

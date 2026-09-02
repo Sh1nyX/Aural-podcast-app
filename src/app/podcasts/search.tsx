@@ -96,7 +96,8 @@ export default function PodcastSearchScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
+    padding: 20,
+    backgroundColor: '#0F1110',
   },
 
   list: {
@@ -111,22 +112,24 @@ const styles = StyleSheet.create({
 
   loadingText: {
     marginTop: 10,
-    color: '#666666',
+    color: '#929992',
   },
 
   empty: {
     textAlign: 'center',
     marginTop: 30,
-    color: '#777777',
+    color: '#777F79',
   },
 
   searchButton: {
-    padding: 12,
+    paddingVertical: 12,
+    marginTop: 10,
     marginBottom: 15,
     borderRadius: 10,
-    backgroundColor: '#208AEF',
-    color: '#ffffff',
+    backgroundColor: '#4CAF6A',
+    color: '#0F1110',
     textAlign: 'center',
     fontWeight: '600',
+    fontSize: 15,
   },
 });

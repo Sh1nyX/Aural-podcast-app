@@ -333,6 +333,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    backgroundColor: '#0F1110',
   },
 
   selectionHeader: {
@@ -348,11 +349,12 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#202521',
   },
 
   closeText: {
     fontSize: 20,
+    color: '#F1F3F1',
   },
 
   selectedCount: {
@@ -360,6 +362,7 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     fontSize: 17,
     fontWeight: '600',
+    color: '#F1F3F1',
   },
 
   headerActions: {
@@ -373,7 +376,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#202521',
   },
 
   disabledButton: {
@@ -382,6 +385,7 @@ const styles = StyleSheet.create({
 
   actionText: {
     fontSize: 18,
+    color: '#F1F3F1',
   },
 
   disabledText: {
@@ -399,48 +403,50 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 12,
     borderRadius: 20,
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#202521',
   },
 
   selectedCategory: {
-    backgroundColor: '#208AEF',
+    backgroundColor: '#4CAF6A',
   },
 
   categoryText: {
     fontSize: 13,
-    color: '#333333',
+    color: '#A7AEA8',
   },
 
   selectedCategoryText: {
-    color: '#ffffff',
+    color: '#0F1110',
+    fontWeight: '600',
   },
 
   sectionTitle: {
     fontSize: 22,
     fontWeight: '600',
     marginBottom: 15,
+    color: '#F1F3F1',
   },
 
   listContent: {
-    paddingBottom: 100,
+    paddingBottom: 120,
   },
 
   empty: {
     textAlign: 'center',
-    color: '#777777',
+    color: '#777F79',
     marginTop: 30,
   },
 
   recordButton: {
     position: 'absolute',
     right: 25,
-    bottom: 25,
+    bottom: 110,
 
     width: 64,
     height: 64,
     borderRadius: 32,
 
-    backgroundColor: '#208AEF',
+    backgroundColor: '#4CAF6A',
 
     justifyContent: 'center',
     alignItems: 'center',
@@ -449,23 +455,26 @@ const styles = StyleSheet.create({
   },
 
   recordButtonText: {
-    color: '#ffffff',
+    color: '#0F1110',
     fontSize: 36,
     fontWeight: '300',
     lineHeight: 40,
   },
 
   podcastsButton: {
-  marginTop: 10,
-  marginBottom: 15,
-  paddingVertical: 12,
-  borderRadius: 10,
-  backgroundColor: '#eeeeee',
-  alignItems: 'center',
-},
+    marginTop: 10,
+    marginBottom: 15,
+    paddingVertical: 12,
+    borderRadius: 10,
+    backgroundColor: '#181C19',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#292E2A',
+  },
 
-podcastsButtonText: {
-  fontSize: 16,
-  fontWeight: '600',
-},
+  podcastsButtonText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#F1F3F1',
+  },
 });

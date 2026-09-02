@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     padding: 12,
     marginBottom: 12,
     borderRadius: 12,
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#181C19',
   },
 
   image: {
@@ -75,16 +75,18 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '600',
     marginBottom: 5,
+    color: '#F1F3F1',
   },
 
   artist: {
     fontSize: 14,
-    color: '#666666',
+    color: '#929992',
     marginBottom: 5,
   },
 
   category: {
     fontSize: 12,
-    color: '#208AEF',
+    color: '#5CCF7A',
+    fontWeight: '600',
   },
 });

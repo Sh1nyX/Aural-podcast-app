@@ -79,9 +79,9 @@ export default function AudioPlayer({
             maximumValue={status.duration || 1}
             value={status.currentTime}
             onSlidingComplete={handleSeek}
-            minimumTrackTintColor="#208AEF"
-            maximumTrackTintColor="#cccccc"
-            thumbTintColor="#208AEF"
+            minimumTrackTintColor="#4CAF6A"
+            maximumTrackTintColor="#343A35"
+            thumbTintColor="#4CAF6A"
           />
 
         </View>
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     width: 42,
     height: 42,
     borderRadius: 21,
-    backgroundColor: '#208AEF',
+    backgroundColor: '#4CAF6A',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 10,

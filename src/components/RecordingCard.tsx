@@ -159,12 +159,12 @@ const styles = StyleSheet.create({
     padding: 16,
     marginBottom: 12,
     borderRadius: 12,
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#181C19',
   },
 
   selectedCard: {
     borderWidth: 2,
-    borderColor: '#208AEF',
+    borderColor: '#4CAF6A',
   },
 
   selectionIndicator: {
@@ -177,21 +177,21 @@ const styles = StyleSheet.create({
     borderRadius: 12,
 
     borderWidth: 2,
-    borderColor: '#aaaaaa',
+    borderColor: '#4A514B',
 
     justifyContent: 'center',
     alignItems: 'center',
 
-    backgroundColor: '#ffffff',
+    backgroundColor: '#202521',
   },
 
   selectionIndicatorSelected: {
-    backgroundColor: '#208AEF',
-    borderColor: '#208AEF',
+    backgroundColor: '#4CAF6A',
+    borderColor: '#4CAF6A',
   },
 
   checkmark: {
-    color: '#ffffff',
+    color: '#0F1110',
     fontSize: 15,
     fontWeight: 'bold',
   },
@@ -205,23 +205,25 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginBottom: 6,
     paddingRight: 30,
+    color: '#F1F3F1',
   },
 
   nameInput: {
     fontSize: 18,
     fontWeight: '600',
     borderWidth: 1,
-    borderColor: '#cccccc',
+    borderColor: '#4A514B',
     borderRadius: 8,
     paddingHorizontal: 10,
     paddingVertical: 6,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#202521',
+    color: '#F1F3F1',
     marginBottom: 6,
   },
 
   details: {
     fontSize: 14,
-    color: '#666666',
+    color: '#929992',
   },
 
   categoryButton: {
@@ -230,19 +232,19 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 8,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#202521',
   },
 
   categoryText: {
     fontSize: 13,
-    color: '#208AEF',
+    color: '#5CCF7A',
     fontWeight: '600',
   },
 
   categoryList: {
     marginTop: 6,
     borderRadius: 8,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#202521',
     overflow: 'hidden',
   },
 
@@ -253,6 +255,7 @@ const styles = StyleSheet.create({
 
   categoryOptionText: {
     fontSize: 14,
+    color: '#F1F3F1',
   },
 
   saveButton: {
@@ -261,11 +264,11 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 12,
     borderRadius: 8,
-    backgroundColor: '#208AEF',
+    backgroundColor: '#4CAF6A',
   },
 
   saveText: {
-    color: '#ffffff',
+    color: '#0F1110',
     fontWeight: '600',
   },
 });

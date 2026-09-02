@@ -309,9 +309,9 @@ useEffect(() => {
           onSlidingComplete={async (value) => {
             await player.seekTo(value);
           }}
-          minimumTrackTintColor="#208AEF"
-          maximumTrackTintColor="#cccccc"
-          thumbTintColor="#208AEF"
+          minimumTrackTintColor="#4CAF6A"
+          maximumTrackTintColor="#292E2A"
+          thumbTintColor="#5CCF7A"
         />
 
       </View>
@@ -389,11 +389,19 @@ useEffect(() => {
         </Pressable>
 
         <Pressable
-          style={styles.smallButton}
+          style={[
+            styles.smallButton,
+            isFavorite && styles.favoriteButtonActive,
+          ]}
           onPress={toggleFavorite}
         >
-          <Text style={styles.favoriteIcon}>
-            {isFavorite ? '♥' : '♡'}
+          <Text
+            style={[
+              styles.favoriteIcon,
+              isFavorite && styles.favoriteIconActive,
+            ]}
+          >
+            ♡
           </Text>
         </Pressable>
 
@@ -407,6 +415,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    backgroundColor: '#0F1110',
   },
 
   center: {
@@ -418,7 +427,7 @@ const styles = StyleSheet.create({
 
   loadingText: {
     marginTop: 10,
-    color: '#666666',
+    color: '#929992',
   },
 
   header: {
@@ -436,20 +445,21 @@ const styles = StyleSheet.create({
   title: {
     width: '100%',
     textAlign: 'center',
-    fontSize: 26,
+    fontSize: 25,
     fontWeight: '600',
     marginBottom: 8,
+    color: '#F1F3F1',
   },
 
   artist: {
     fontSize: 17,
-    color: '#777777',
+    color: '#929992',
     marginBottom: 5,
   },
 
   podcastName: {
     fontSize: 15,
-    color: '#999999',
+    color: '#606660',
   },
 
   progressSection: {
@@ -459,31 +469,34 @@ const styles = StyleSheet.create({
   timeRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 5,
+    marginBottom: 2,
     marginTop: 15,
   },
 
   time: {
     fontSize: 13,
-    color: '#777777',
+    color: '#777F79',
   },
 
- slider: {
-  width: '100%',
-  height: 40,
-},
+  slider: {
+    width: '100%',
+    height: 40,
+  },
 
- controls: {
+  controls: {
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
-  marginTop: 40,
-  marginBottom: 60,
+  marginTop: 20,
+  marginBottom: 50,
+
+  zIndex: 10,
+  elevation: 10,
 },
 
   sideControl: {
-    position: 'relative',
-  },
+  position: 'relative',
+},
 
   smallButton: {
   width: 55,
@@ -491,24 +504,30 @@ const styles = StyleSheet.create({
   borderRadius: 28,
   justifyContent: 'center',
   alignItems: 'center',
+  backgroundColor: '#202521',
 },
 
   speedText: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#208AEF',
-  },
+  fontSize: 14,
+  fontWeight: '600',
+  color: '#5CCF7A',
+  textAlign: 'center',
+  includeFontPadding: false,
+},
 
-  speedList: {
-    position: 'absolute',
-    bottom: 55,
-    left: -15,
-    width: 78,
-    borderRadius: 10,
-    backgroundColor: '#ffffff',
-    elevation: 6,
-    overflow: 'hidden',
-  },
+ speedList: {
+  position: 'absolute',
+  bottom: 62,
+  left: -12,
+  width: 80,
+  borderRadius: 10,
+  backgroundColor: '#181C19',
+  borderWidth: 1,
+  borderColor: '#292E2A',
+  overflow: 'hidden',
+
+  zIndex: 100,
+},
 
   speedOption: {
     paddingVertical: 9,
@@ -516,48 +535,66 @@ const styles = StyleSheet.create({
   },
 
   selectedSpeed: {
-    backgroundColor: '#208AEF',
+    backgroundColor: '#4CAF6A',
   },
 
   speedOptionText: {
     fontSize: 14,
+    color: '#F1F3F1',
   },
 
   selectedSpeedText: {
-    color: '#ffffff',
+    color: '#0F1110',
     fontWeight: '600',
   },
 
   skipButton: {
   width: 65,
   height: 65,
+  borderRadius: 33,
   justifyContent: 'center',
   alignItems: 'center',
+  backgroundColor: '#202521',
 },
 
   skipText: {
   fontSize: 36,
   lineHeight: 36,
-  color: '#208AEF',
+  paddingBottom:10,
+  color: '#5CCF7A',
+  textAlign: 'center',
+  includeFontPadding: false,
 },
 
   playButton: {
-  width: 68,
-  height: 68,
-  borderRadius: 34,
-  backgroundColor: '#208AEF',
-  justifyContent: 'center',
-  alignItems: 'center',
-},
+    width: 68,
+    height: 68,
+    borderRadius: 34,
+    backgroundColor: '#4CAF6A',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 
   playIcon: {
-  color: '#ffffff',
+  color: '#0F1110',
   fontSize: 28,
   fontWeight: 'bold',
+  textAlign: 'center',
+  includeFontPadding: false,
 },
 
   favoriteIcon: {
-  fontSize: 36,
-  color: '#208AEF',
+  fontSize: 32,
+  color: '#5CCF7A',
+  textAlign: 'center',
+  includeFontPadding: false,
+},
+
+favoriteButtonActive: {
+  backgroundColor: '#4CAF6A',
+},
+
+favoriteIconActive: {
+  color: '#0F1110',
 },
 });

@@ -2,7 +2,17 @@ import { Stack } from 'expo-router';
 
 export default function RootLayout() {
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#0F1110',
+        },
+        headerTintColor: '#F1F3F1',
+        headerTitleStyle: {
+          fontWeight: '600',
+        },
+      }}
+    >
       <Stack.Screen
         name="index"
         options={{ title: 'Аудіо' }}
@@ -10,12 +20,7 @@ export default function RootLayout() {
 
       <Stack.Screen
         name="record"
-        options={{ title: 'Нова запис' }}
-      />
-
-      <Stack.Screen
-        name="recordings"
-        options={{ title: 'Мої записи' }}
+        options={{ title: 'Новий запис' }}
       />
 
       <Stack.Screen
@@ -24,8 +29,18 @@ export default function RootLayout() {
       />
 
       <Stack.Screen
+        name="podcasts/[id]"
+        options={{ title: 'Випуски' }}
+      />
+
+      <Stack.Screen
+        name="podcasts/search"
+        options={{ title: 'Пошук подкастів' }}
+      />
+
+      <Stack.Screen
         name="player/[id]"
-        options={{ title: 'Плеер' }}
+        options={{ title: 'Плеєр' }}
       />
     </Stack>
   );

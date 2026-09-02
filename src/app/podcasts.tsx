@@ -77,16 +77,20 @@ export default function PodcastsScreen() {
   };
 
   const handleFavoritesPress = () => {
-    setShowFavorites(true);
-    setShowCategories(false);
+  if (showFavorites) {
+    setShowFavorites(false);
+    loadPodcasts(selectedCategory);
+    return;
+  }
 
-    loadFavorites();
-  };
+  setShowFavorites(true);
+  setShowCategories(false);
+
+  loadFavorites();
+};
 
   return (
     <View style={styles.container}>
-
-      {/* Верхние две кнопки */}
       <View style={styles.topButtons}>
 
         <Pressable
@@ -121,8 +125,6 @@ export default function PodcastsScreen() {
 
       </View>
 
-
-      {/* Кнопка категории */}
       {!showFavorites && (
         <Pressable
           style={styles.categoryButton}
@@ -136,7 +138,7 @@ export default function PodcastsScreen() {
           </Text>
         </Pressable>
       )}
-      
+
       {showCategories && !showFavorites && (
         <View style={styles.categoryList}>
 
@@ -167,16 +169,12 @@ export default function PodcastsScreen() {
         </View>
       )}
 
-
-      {/* Заголовок */}
       <Text style={styles.title}>
         {showFavorites
           ? 'Обране'
           : selectedCategory}
       </Text>
 
-
-      {/* Загрузка */}
       {loading ? (
         <View style={styles.center}>
           <ActivityIndicator size="large" />
@@ -186,8 +184,7 @@ export default function PodcastsScreen() {
           </Text>
         </View>
       ) : (
-
-        /* Список подкастов */
+        
         <FlatList
           data={podcasts}
           keyExtractor={(item) =>
@@ -229,83 +226,94 @@ export default function PodcastsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
+    padding: 20,
+    backgroundColor: '#0F1110',
   },
 
   topButtons: {
     flexDirection: 'row',
     gap: 10,
-    marginBottom: 10,
+    marginBottom: 15,
   },
 
   topButton: {
     flex: 1,
     paddingVertical: 12,
     borderRadius: 10,
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#181C19',
+    borderWidth: 1,
+    borderColor: '#292E2A',
     alignItems: 'center',
-  },
-
-  activeTopButton: {
-    backgroundColor: '#208AEF',
   },
 
   topButtonText: {
     fontSize: 15,
     fontWeight: '600',
+    color: '#F1F3F1',
+  },
+
+  activeTopButton: {
+    backgroundColor: '#4CAF6A',
+    borderColor: '#4CAF6A',
   },
 
   activeTopButtonText: {
-    color: '#ffffff',
+    color: '#0F1110',
   },
 
   categoryButton: {
-    paddingVertical: 10,
-    paddingHorizontal: 5,
-    marginBottom: 5,
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    borderRadius: 10,
+    backgroundColor: '#181C19',
+    borderWidth: 1,
+    borderColor: '#292E2A',
+    marginBottom: 8,
   },
 
   categoryButtonText: {
-    fontSize: 21,
+    fontSize: 15,
     fontWeight: '600',
+    color: '#F1F3F1',
   },
 
   categoryList: {
-    marginBottom: 10,
+    marginBottom: 12,
     borderRadius: 10,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#181C19',
+    borderWidth: 1,
+    borderColor: '#292E2A',
     overflow: 'hidden',
-    elevation: 5,
   },
 
   categoryItem: {
-    paddingVertical: 12,
-    paddingHorizontal: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#eeeeee',
+    paddingVertical: 11,
+    paddingHorizontal: 14,
   },
 
   selectedCategoryItem: {
-    backgroundColor: '#208AEF',
+    backgroundColor: '#4CAF6A',
   },
 
   categoryText: {
-    fontSize: 15,
+    fontSize: 14,
+    color: '#A7AEA8',
   },
 
   selectedCategoryText: {
-    color: '#ffffff',
+    color: '#0F1110',
     fontWeight: '600',
   },
 
   title: {
-    fontSize: 16,
-    color: '#777777',
-    marginBottom: 10,
+    fontSize: 22,
+    fontWeight: '600',
+    color: '#F1F3F1',
+    marginBottom: 15,
   },
 
   list: {
-    paddingBottom: 30,
+    paddingBottom: 20,
   },
 
   center: {
@@ -316,12 +324,12 @@ const styles = StyleSheet.create({
 
   loadingText: {
     marginTop: 10,
-    color: '#666666',
+    color: '#929992',
   },
 
   empty: {
     textAlign: 'center',
     marginTop: 30,
-    color: '#777777',
+    color: '#777F79',
   },
 });

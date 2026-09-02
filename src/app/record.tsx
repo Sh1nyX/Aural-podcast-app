@@ -54,7 +54,7 @@ export default function RecordScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
-        Нова запис
+        Новий запис
       </Text>
 
       <Text style={styles.timer}>
@@ -81,17 +81,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    backgroundColor: '#0F1110',
   },
 
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    marginBottom: 40,
+    fontSize: 26,
+    fontWeight: '600',
+    marginBottom: 35,
+    color: '#F1F3F1',
   },
 
   timer: {
     fontSize: 56,
-    fontWeight: '600',
-    marginBottom: 40,
+    fontWeight: '500',
+    marginBottom: 45,
+    color: '#5CCF7A',
+    fontVariant: ['tabular-nums'],
   },
 });
