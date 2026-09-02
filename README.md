@@ -1,56 +1,668 @@
-# Welcome to your Expo app 👋
+# 🎙️ Audio Notes & Podcasts
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Мобільний застосунок на **React Native + Expo** для запису голосових нотаток та прослуховування подкастів.
 
-## Get started
+Застосунок дозволяє записувати й зберігати аудіо на пристрої, керувати власними записами, а також шукати подкасти через відкритий REST API, переглядати їхні випуски та слухати їх у вбудованому аудіоплеєрі.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## ✨ Можливості
 
-2. Start the app
+### 🎤 Голосові записи
 
-   ```bash
-   npx expo start
-   ```
+- Запис аудіо за допомогою мікрофона пристрою
+- Відображення часу запису
+- Збереження аудіофайлу в пам'яті пристрою
+- Локальне збереження метаданих запису
+- Перегляд списку записів
+- Перейменування записів
+- Видалення одного або декількох записів
+- Видалення відповідного аудіофайлу з пам'яті пристрою
 
-In the output, you'll find options to open the app in a
+### 🔎 Пошук і категорії
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Пошук голосових записів за назвою
+- Фільтрація записів за категоріями
+- Створення нових записів із вибраною категорією
+- Вибір декількох записів для масового видалення
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### ▶️ Аудіоплеєр
 
-## Get a fresh project
+- Відтворення та пауза
+- Відображення поточного часу
+- Відображення тривалості аудіо
+- Перемотування за часовою шкалою
+- Керування відтворенням за допомогою компактного інтерфейсу
 
-When you're ready, run:
+### 🎧 Подкасти
 
-```bash
-npm run reset-project
+- Пошук подкастів через відкритий REST API
+- Каталог подкастів за категоріями
+- Перегляд інформації про подкаст
+- Завантаження списку випусків через RSS Feed
+- Відображення назви та дати випуску
+- Прослуховування окремих випусків
+- Автоматичне відтворення наступного випуску
+- Зупинка відтворення після останнього випуску
+
+### ⏩ Плеєр подкастів
+
+- Play / Pause
+- Перемотування на ±15 секунд
+- Переміщення за часовою шкалою
+- Зміна швидкості відтворення
+- Підтримувані швидкості:
+  - 0.5×
+  - 0.75×
+  - 1×
+  - 1.25×
+  - 1.5×
+  - 2×
+- Фонове відтворення аудіо
+- Продовження відтворення після вимкнення екрана
+
+### ❤️ Обране
+
+- Додавання подкастів до обраного
+- Видалення подкастів з обраного
+- Локальне збереження обраних подкастів
+- Окремий розділ обраних подкастів
+
+---
+
+## 🛠️ Технології
+
+Проєкт розроблено з використанням:
+
+- **React Native**
+- **Expo**
+- **TypeScript**
+- **Expo Router**
+- **expo-audio**
+- **AsyncStorage**
+- **Fast XML Parser**
+- **React Native Slider**
+
+---
+
+## 📦 Основні бібліотеки
+
+| Бібліотека | Призначення |
+|---|---|
+| `expo` | Основна платформа Expo |
+| `react-native` | Розробка мобільного інтерфейсу |
+| `expo-router` | Навігація між екранами |
+| `expo-audio` | Запис та відтворення аудіо |
+| `@react-native-async-storage/async-storage` | Локальне зберігання даних |
+| `@react-native-community/slider` | Повзунок перемотування аудіо |
+| `fast-xml-parser` | Парсинг RSS XML |
+| `typescript` | Типізація проєкту |
+
+---
+
+## 🌐 API
+
+Для пошуку подкастів використовується відкритий **iTunes Search API**.
+
+API використовується для отримання:
+
+- назви подкасту;
+- автора;
+- зображення;
+- категорії;
+- URL RSS Feed.
+
+Після отримання подкасту застосунок використовує його `feedUrl` для завантаження списку випусків.
+
+### iTunes Search API
+
+Для пошуку подкастів використовується відкритий **iTunes Search API**:
+
+```text
+https://itunes.apple.com/search
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Основні параметри запиту:
 
-### Other setup steps
+```text
+term
+media=podcast
+limit=20
+```
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+Після отримання подкасту застосунок використовує його `feedUrl` для завантаження списку випусків.
 
-## Learn more
+### RSS Feed
 
-To learn more about developing your project with Expo, look at the following resources:
+Для отримання випусків вибраного подкасту використовується його RSS Feed.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+З RSS-стрічки за допомогою `fast-xml-parser` отримуються:
 
-## Join the community
+- назва випуску;
+- опис;
+- посилання на аудіофайл;
+- тривалість;
+- дата публікації.
 
-Join our community of developers creating universal apps.
+Процес отримання випусків:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```text
+Вибір подкасту
+      ↓
+Отримання feedUrl
+      ↓
+Запит до RSS Feed
+      ↓
+Отримання XML
+      ↓
+fast-xml-parser
+      ↓
+Масив PodcastEpisode[]
+```
+
+---
+
+## 💾 Локальне зберігання
+
+Застосунок використовує два способи зберігання даних.
+
+### AsyncStorage
+
+В `AsyncStorage` зберігаються:
+
+- метадані голосових записів;
+- список обраних подкастів.
+
+Структура голосового запису:
+
+```ts
+type Recording = {
+  id: string;
+  name: string;
+  date: string;
+  duration: number;
+  category: string;
+  uri: string;
+};
+```
+
+### Файлова система пристрою
+
+Самі аудіофайли голосових записів зберігаються в директорії документів застосунку.
+
+У локальних даних зберігається шлях до відповідного аудіофайлу.
+
+Під час видалення запису видаляються:
+
+1. метадані з `AsyncStorage`;
+2. фізичний аудіофайл із пам'яті застосунку.
+
+---
+
+## 📁 Структура проєкту
+
+```text
+src/
+├── app/
+│   ├── player/
+│   │   └── [id].tsx
+│   │
+│   ├── podcasts/
+│   │   └── [id].tsx
+│   │
+│   ├── _layout.tsx
+│   ├── index.tsx
+│   ├── podcasts.tsx
+│   └── record.tsx
+│
+├── components/
+│   ├── AudioPlayer.tsx
+│   ├── PodcastCard.tsx
+│   ├── RecordButton.tsx
+│   ├── RecordingCard.tsx
+│   └── SearchBar.tsx
+│
+├── constants/
+│   ├── categories.ts
+│   └── podcastCategories.ts
+│
+├── hooks/
+│   └── useRecorder.ts
+│
+├── services/
+│   ├── podcastApi.ts
+│   ├── podcastFeed.ts
+│   ├── podcastStorage.ts
+│   └── recordingStorage.ts
+│
+└── types/
+    ├── podcast.ts
+    ├── podcastEpisode.ts
+    └── recording.ts
+
+ 
+```
+
+---
+
+## 🧩 Архітектура
+
+Проєкт розділений на декілька основних частин.
+
+### `app`
+
+Містить екрани застосунку та маршрути Expo Router.
+
+Основні екрани:
+
+- `index.tsx` — головний екран із голосовими записами;
+- `record.tsx` — створення нового запису;
+- `podcasts.tsx` — каталог подкастів;
+- `podcasts/[id].tsx` — список випусків вибраного подкасту;
+- `player/[id].tsx` — плеєр випуску.
+
+---
+
+### `components`
+
+Містить багаторазово використовувані компоненти інтерфейсу:
+
+```text
+AudioPlayer
+RecordingCard
+PodcastCard
+SearchBar
+RecordButton
+```
+
+Компоненти отримують дані та обробники подій через `props`.
+
+---
+
+### `hooks`
+
+Містить власні React Hooks.
+
+`useRecorder` відповідає за:
+
+- отримання дозволу на використання мікрофона;
+- налаштування аудіо;
+- запуск запису;
+- зупинку запису;
+- підрахунок часу запису;
+- отримання URI аудіофайлу.
+
+---
+
+### `services`
+
+Містить логіку роботи із зовнішніми та локальними даними.
+
+```text
+podcastApi.ts
+```
+
+Пошук подкастів через iTunes Search API.
+
+```text
+podcastFeed.ts
+```
+
+Завантаження та обробка RSS Feed подкастів.
+
+```text
+podcastStorage.ts
+```
+
+Робота зі списком обраних подкастів.
+
+```text
+recordingStorage.ts
+```
+
+Робота з локальними записами та аудіофайлами.
+
+---
+
+### `types`
+
+Містить TypeScript-типи застосунку:
+
+```text
+Podcast
+PodcastEpisode
+Recording
+```
+
+Використання типів дозволяє описувати структуру даних та зменшувати кількість помилок під час розробки.
+
+---
+
+## 🧭 Навігація
+
+Для навігації використовується **Expo Router**.
+
+Структура маршрутів:
+
+```text
+/
+├── /record
+├── /podcasts
+├── /podcasts/[id]
+└── /player/[id]
+```
+
+Динамічний маршрут `[id]` використовується для передачі ідентифікатора вибраного об'єкта.
+
+---
+
+## 🎙️ Робота із записом аудіо
+
+Для запису використовується `expo-audio`.
+
+Процес запису:
+
+```text
+Користувач натискає "Запис"
+        ↓
+Запитується доступ до мікрофона
+        ↓
+Створюється Audio Recorder
+        ↓
+Починається запис
+        ↓
+Підраховується час
+        ↓
+Користувач зупиняє запис
+        ↓
+Отримується URI файлу
+        ↓
+Створюються метадані
+        ↓
+Метадані зберігаються в AsyncStorage
+```
+
+---
+
+## 🎧 Робота з подкастами
+
+Отримання подкастів відбувається у два етапи.
+
+### 1. Пошук подкасту
+
+Застосунок відправляє запит до iTunes Search API:
+
+```text
+Пошуковий запит
+       ↓
+iTunes Search API
+       ↓
+Список Podcast
+```
+
+### 2. Отримання випусків
+
+Після вибору подкасту:
+
+```text
+Podcast
+   ↓
+feedUrl
+   ↓
+RSS Feed
+   ↓
+XML
+   ↓
+fast-xml-parser
+   ↓
+PodcastEpisode[]
+```
+
+Кожен випуск містить посилання на аудіофайл, тому застосунок може відтворювати його безпосередньо.
+
+---
+
+## ▶️ Автоматичне відтворення випусків
+
+Після завершення поточного випуску застосунок визначає наступний випуск у списку RSS.
+
+```text
+Випуск 1
+   ↓
+завершення
+   ↓
+Випуск 2
+   ↓
+завершення
+   ↓
+Випуск 3
+   ↓
+...
+   ↓
+останній випуск
+   ↓
+зупинка
+```
+
+Перехід між випусками відбувається без виходу з екрана плеєра.
+
+---
+
+## ⏩ Керування відтворенням
+
+Плеєр подкастів підтримує:
+
+- відтворення та паузу;
+- перемотування на 15 секунд назад;
+- перемотування на 15 секунд вперед;
+- переміщення за часовою шкалою;
+- зміну швидкості відтворення.
+
+Доступні швидкості:
+
+```text
+0.5×
+0.75×
+1×
+1.25×
+1.5×
+2×
+```
+
+---
+
+## 📱 Фонове відтворення
+
+Для фонового відтворення використовується `expo-audio`.
+
+У конфігурації Expo увімкнено відповідну функцію:
+
+```json
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-audio",
+        {
+          "enableBackgroundPlayback": true
+        }
+      ]
+    ]
+  }
+}
+```
+
+Аудіосесія налаштована на відтворення у фоні:
+
+```ts
+await setAudioModeAsync({
+  playsInSilentMode: true,
+  shouldPlayInBackground: true,
+  interruptionMode: 'doNotMix',
+});
+```
+
+Завдяки цьому аудіо може продовжувати відтворюватися після згортання застосунку та при вимкненому екрані.
+
+---
+
+## ❤️ Обране
+
+Для зберігання обраних подкастів використовується `AsyncStorage`.
+
+Процес додавання:
+
+```text
+Користувач натискає ♥
+        ↓
+Перевірка наявності подкасту
+        ↓
+Подкаст додається до списку
+        ↓
+Список зберігається в AsyncStorage
+```
+
+Обрані подкасти можна переглянути через кнопку **«♥ Обране»** на екрані подкастів.
+
+---
+
+## 📱 Категорії подкастів
+
+У каталозі доступні такі категорії:
+
+```text
+Technology
+Comedy
+News
+Education
+Music
+Sports
+Business
+Science
+```
+
+Вибір категорії виконує новий запит до API та завантажує відповідні подкасти.
+
+---
+
+## 📝 Типи даних
+
+### Podcast
+
+```ts
+type Podcast = {
+  id: number;
+  name: string;
+  artist: string;
+  artworkUrl: string;
+  feedUrl: string;
+  category: string;
+};
+```
+
+### PodcastEpisode
+
+```ts
+type PodcastEpisode = {
+  id: string;
+  title: string;
+  description: string;
+  audioUrl: string;
+  duration: number;
+  date: string;
+};
+```
+
+### Recording
+
+```ts
+type Recording = {
+  id: string;
+  name: string;
+  date: string;
+  duration: number;
+  category: string;
+  uri: string;
+};
+```
+
+---
+
+## 🚀 Встановлення та запуск
+
+### Вимоги
+
+Для запуску проєкту необхідно мати:
+
+- Node.js;
+- npm;
+- Android Studio та Android Emulator або фізичний Android-пристрій;
+- Expo.
+
+### Встановлення залежностей
+
+Після клонування проєкту:
+
+```bash
+npm install
+```
+
+### Запуск
+
+```bash
+npx expo start
+```
+
+Після запуску застосунок можна відкрити:
+
+- в Android Emulator;
+- на фізичному Android-пристрої;
+- у середовищі розробки Expo.
+
+---
+
+## 🔐 Дозволи
+
+Для створення голосових записів застосунку потрібен доступ до мікрофона.
+
+Під час першого запуску запису Android запитує відповідний дозвіл у користувача.
+
+---
+
+## 🎯 Мета проєкту
+
+Проєкт розроблено як мобільний застосунок для роботи з аудіоконтентом.
+
+Основні завдання проєкту:
+
+- робота з мікрофоном;
+- робота з файловою системою;
+- локальне зберігання даних;
+- робота з REST API;
+- робота з RSS;
+- обробка XML;
+- відтворення аудіо;
+- створення багаторазово використовуваних React Native-компонентів;
+- навігація між екранами;
+- робота з асинхронними операціями.
+
+---
+
+## 🔮 Подальший розвиток
+
+У майбутньому проєкт можна розширити:
+
+- покращеним дизайном інтерфейсу;
+- анімаціями;
+- повноцінним керуванням відтворенням із екрана блокування;
+- сортуванням випусків;
+- історією прослуховування;
+- збереженням позиції відтворення;
+- завантаженням випусків для офлайн-прослуховування;
+- повідомленнями про нові випуски.
+
+---
+
+## Розробники: Халюк Данііл, Денежко Володимир
+
+Навчальний проєкт, розроблений із використанням **React Native + Expo**.
