@@ -1,4 +1,4 @@
-# 🎙️ Audio Notes & Podcasts
+# 🎙️ Aural — Podcast & Audio Notes App
 
 Мобільний застосунок на **React Native + Expo** для запису голосових нотаток та прослуховування подкастів.
 
